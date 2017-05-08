@@ -10,16 +10,16 @@
 <body>
 	<div class="main_con">
 		<h1>E_Bank</h1>
-		<h3>Administor Login</h3>
-		<form action="" >
+		<h3>Administrator Login</h3>
+		<form action="../LogInServlet" method="post" >
 			<div class="username">
-				<input type="text" placeholder="Username">
+				<input type="text" placeholder="Username" name="username">
 			</div>
 			<div class="pwd">
-				<input type="password" placeholder="Password">
+				<input type="password" placeholder="Password" name="password">
 			</div>
 			<div class="login">
-				<input type="button" value="Submit">
+				<input type="button" value="Submit" onclick="this.form.submit()">
 			</div>
 		</form>
 	</div>

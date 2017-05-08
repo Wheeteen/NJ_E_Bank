@@ -1,5 +1,7 @@
 package util;
 
+
+//数据库连接是成功的
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;

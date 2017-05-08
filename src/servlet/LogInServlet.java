@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.administrator;
+import dao.administratorDAO;
+
 
 //用servet调用DAO取得数据，后在jsp页面上显示出来
 /**
@@ -29,16 +32,41 @@ public class LogInServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
+    
+    //对请求进行处理
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		try{
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			
+			administrator ad=administratorDAO.get(username,password);   //数据库获取uname,psd,返回bean
+			
+			//判断是否存在这样的bean
+			if(null==ad){
+				request.setAttribute("msg", "账号密码错误");
+				 
+				response.sendRedirect("http://localhost:8080/DE_bank/view/mainPage.jsp"); 	
+			}
+			
+			//获得会话session
+			request.getSession().setAttribute("user", ad);
+			//response.sendRedirect("http://localhost:8080/DE_bank/view/mainPage.jsp"); 
+		
+			
+		}
+	
+			
+		catch(Exception ex){
+			ex.printStackTrace();	
+
+		}		
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		
 		doGet(request, response);
 	}
 
