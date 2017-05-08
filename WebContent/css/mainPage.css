@@ -1,0 +1,196 @@
+@CHARSET "UTF-8";
+
+html,body,h1,div,span,form,input,h1,h3,header,img,ul,li,label{
+	padding:0;
+	margin: 0;
+}
+body{
+	width:100%;
+	font-size: 14px;
+	font-family: 'Arial';
+	background-color: #f9f9f9;
+}
+.g_container{
+	width: 1224px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+header{
+	width: 100%;
+	height: 60px;
+	line-height: 60px;
+	overflow:hidden;
+	background-color: #076ACF;
+	color: #fff;
+}
+.logo{
+	float: left;
+}
+.logo h1{
+	font-size: 18px;
+}
+.perInfo{
+	float : right;
+	font-size: 16px;
+}
+.perInfo .perPic{
+	float: left;
+	height: 60px;
+	margin-right: 10px;
+	display: table;
+	vertical-align: middle;
+}
+.perPic span{
+	display: table-cell;
+	vertical-align: middle;
+}
+.perPic span img{
+	display: table-cell;
+	vertical-align: middle;
+	border-radius: 3px;
+}
+.mainCon{
+	width: 100%;
+	overflow: hidden;
+	margin: 50px auto;
+}
+.left_con{
+	width: 290px;
+	float: left;
+	background-color: #f3f3f3;
+	padding: 30px 15px;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	margin-right: 15px;
+}
+.left_con h3,.right_con h3{
+	width: 100%;
+	text-align: center;
+	font-weight: normal;
+	font-size: 20px;
+	height: 40px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid #ccc;
+}
+.fns{
+	list-style: none;
+}
+.fns li{
+	width: 100%;
+	height: 35px;
+	line-height: 35px;
+	text-align: center;
+	font-size: 18px;
+	margin-bottom: 15px;
+	padding: 7px 0px;
+	border:1px solid #f3f3f3;
+}
+.fns li:hover,.target{
+	background-color: #f9f9f9;
+	border:1px solid #e3e3e3 !important;
+	border-radius: 5px;
+	cursor: pointer;
+}
+.right_con{
+	float: left;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	width: 854px;
+	padding: 40px 15px;
+}
+.right_con h3{
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+.right_con h3 span{
+	display: inline-block;
+	margin-right: 7px;
+}
+.right_con .cblue{
+	color: #076ACF;
+	margin-right: 17px;
+}
+.rmainCon{
+	position : relative;
+}
+.AccountFn{
+	width: 100%;
+	overflow: hidden;
+	margin: 30px auto;
+}
+.openAccount{
+	display: none;
+}
+.inquiryAccount{
+	margin-top: 50px;
+	display: none;
+}
+.withdrawalAccount{
+	margin-top: 50px;
+	/*display: none;*/
+}
+.depositAccount{
+	margin-top: 50px;
+	display: none;
+}
+form div{
+	width: 600px;
+	margin: 0 auto 20px;
+	text-align: center;
+}
+form label{
+	width: 250px;
+	text-align: right;	
+	display: inline-block;
+	margin-right: 8px;
+	font-size: 16px;
+}
+form input{
+	width: 280px;
+}
+input{
+    -webkit-appearance: none;
+	height: 35px;
+	line-height: 35px;
+	text-indent: 8px;
+	border:1px solid #ccc;
+	color:#333;
+	outline:none;
+	border-radius: 4px;
+	font-size: 16px;
+}
+input:focus{
+   border-color: #0F88EB;
+}
+.login{
+	margin-top: 30px;
+	margin-bottom: 0 !important;
+}
+.login input{
+    -webkit-appearance: none;
+    width:300px;
+   	height: 40px;
+   	color:#fff;
+   	text-align: center;
+   	line-height: 40px;
+   	background-color:  #0F88EB;
+   	outline: none;
+   	border:0;
+   	border-radius: 4px;
+   	cursor: pointer;
+   	font-size: 18px;
+   	letter-spacing: 1px;
+}
+.login input:hover{
+	opacity: 0.8;
+	filter: alpha(opacity = 80);
+}
+.auth{
+	display: none;
+	position: absolute;
+	width: 500px;
+	margin-left: 177px;
+	background-color: #ccc;
+	top: 0;
+	left: 0;
+}
