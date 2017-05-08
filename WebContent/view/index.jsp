@@ -11,17 +11,25 @@
 	<div class="main_con">
 		<h1>E_Bank</h1>
 		<h3>Administrator Login</h3>
-		<form action="../LogInServlet" method="post" >
+		<!-- action="../LogInServlet" method="post" -->
+		<form class="LoginForm">
 			<div class="username">
-				<input type="text" placeholder="Username" name="username">
+				<input type="text" placeholder="Username" name="username" class="uname">
 			</div>
-			<div class="pwd">
-				<input type="password" placeholder="Password" name="password">
+			<!-- input is blank -->
+			<div class="tip_error err_name"></div>
+			<div class="username">
+				<input type="password" placeholder="Password" name="password" class="upwd">
 			</div>
+			<!-- input is blank -->
+			<div class="tip_error err_pwd"></div>
 			<div class="login">
-				<input type="button" value="Submit" onclick="this.form.submit()">
+				<input type="button" value="Submit" id="submitLogin">
 			</div>
 		</form>
 	</div>
+	
+	<script src="../js/jquery-2.1.4.min.js" type="text/javascript"></script>
+	<script src="../js/admin.js"></script>
 </body>
 </html>

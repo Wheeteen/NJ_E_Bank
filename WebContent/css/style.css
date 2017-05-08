@@ -32,15 +32,20 @@ h3{
 
 form{
 	width: 380px;
-	margin: 10px auto;
+	margin: 30px auto;
 	
 }
-div{
+.username{
    	width:100%;
-    margin: 15px auto;
+    margin: 7px auto 3px;
+}
+.tip_error{
+	height: 15px;
+	margin-left: 10px;
+	color: #EA2000;
 }
 .login{
-	margin-top: 40px;
+	margin-top: 30px;
 }
 input{
     -webkit-appearance: none;

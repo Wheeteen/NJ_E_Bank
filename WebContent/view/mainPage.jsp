@@ -44,8 +44,8 @@
 				<!-- title -->
 				<h3>
 					<span class="cblue">Business Management</span> 
-					<span>></span>
-					<span class="keyword">Saving account opening</span>
+					<span>></span><span>Saving account</span>
+					<span class="keyword">opening</span>
 				</h3>
 				<div class="rmainCon">
 					<!-- Saving account opening -->

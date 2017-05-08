@@ -50,20 +50,24 @@ public class LogInServlet extends HttpServlet {
 			
 			administrator ad=administratorDAO.get(username,password);   //数据库获取uname,psd,返回bean
 			
-			
+			String json = "";
 			//问题：不确定数据库查询数据是否成功，还有查询成功后和输入信息比较不了，跳转不到相应页面
 			//判断是否存在这样的bean
 			if(null==ad){
 				request.setAttribute("msg", "账号密码错误");
-				 
-				response.sendRedirect("http://localhost:8080/DE_bank/view/index.jsp"); 	
+				json="{\"success\": 0,\"msg\":\"Something wrong with account or password\"}";
+//				response.sendRedirect("view/index.jsp"); 	
 			}else
 			{
 			//获得会话session
 			request.getSession().setAttribute("administrator", ad);
-			response.sendRedirect("http://localhost:8080/DE_bank/view/mainPage.jsp"); 
+			json="{\"success\": 1}";
+//			response.sendRedirect("view/mainPage.jsp"); 
 		
 			}
+			response.getWriter().write(json);
+			response.getWriter().flush();
+			response.getWriter().close();
 		}
 		catch(Exception ex){
 			ex.printStackTrace();	

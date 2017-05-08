@@ -97,6 +97,7 @@ header{
 	border-radius: 4px;
 	width: 854px;
 	padding: 40px 15px;
+	min-height: 304px;
 }
 .right_con h3{
 	text-align: left;
@@ -110,6 +111,9 @@ header{
 	color: #076ACF;
 	margin-right: 17px;
 }
+.right_con .keyword{
+	margin-left: -6px !important;
+}
 .rmainCon{
 	position : relative;
 }
@@ -118,16 +122,14 @@ header{
 	overflow: hidden;
 	margin: 30px auto;
 }
-.openAccount{
-	display: none;
-}
+
 .inquiryAccount{
 	margin-top: 50px;
 	display: none;
 }
 .withdrawalAccount{
 	margin-top: 50px;
-	/*display: none;*/
+	display: none;
 }
 .depositAccount{
 	margin-top: 50px;

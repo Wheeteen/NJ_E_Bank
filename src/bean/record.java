@@ -10,7 +10,9 @@ public class record {
 	private String type;  //交易类型
 	private Date tdate;  //交易日期
 	
-	
+	public record(){
+		
+	}
 	public int getId() {
 		return id;
 	}

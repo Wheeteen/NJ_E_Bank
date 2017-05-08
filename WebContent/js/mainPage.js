@@ -4,19 +4,20 @@
 
 (function(){
 	$("#A_open").on("click",function(){
-		closeFns(".openAccount",'.inquiryAccount ,.withdrawalAccount ,.depositAccount');
+		closeFns(".openAccount","#A_open","opening");
 	})
 	$("#A_inquiry").on("click",function(){
-		closeFns(".inquiryAccount",'.openAccount ,.withdrawalAccount ,.depositAccount');
+		closeFns(".inquiryAccount","#A_inquiry","inquiry");
 	})
 	$("#A_withdrawal").on("click",function(){
-		closeFns(".withdrawalAccount",'.inquiryAccount ,.openAccount ,.depositAccount');
+		closeFns(".withdrawalAccount","#A_withdrawal","withdrawal");
 	})
 	$("#A_deposit").on("click",function(){
-		closeFns(".depositAccount",'.inquiryAccount ,.withdrawalAccount ,.openAccount');
+		closeFns(".depositAccount","#A_deposit","deposit");
 	})
-	function closeFns(target,otherEle){
-		$(target).fadeIn(300);
-		$(otherEle).hide();
+	function closeFns(target,Ele,name){
+		$(target).fadeIn(300).siblings().hide();
+		$(Ele).addClass("target").siblings().removeClass("target");
+		$(".keyword").text(name);
 	}
 })();

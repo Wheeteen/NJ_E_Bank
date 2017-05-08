@@ -7,6 +7,10 @@ public class savingaccount {
 	private String accont_PIN;
 	private float balance;
 	private char status;   //ÕË»§×´Ì¬
+	
+	public savingaccount() {
+		// TODO Auto-generated constructor stub
+	}
 	public int getId() {
 		return id;
 	}

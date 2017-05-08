@@ -6,6 +6,10 @@ public class customer {
 	private String name;
 	private String password;
 	private String authentication_code;
+	
+	public customer(){
+		
+	}
 	public int getId() {
 		return id;
 	}
