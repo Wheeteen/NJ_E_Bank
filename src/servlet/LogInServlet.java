@@ -51,6 +51,15 @@ public class LogInServlet extends HttpServlet {
 			administrator ad=administratorDAO.get(username,password);   //数据库获取uname,psd,返回bean
 			
 			
+			
+			/*
+			//尝试将数据库中数据以json形式返回
+			String json=ad.toString();  //将获得的bean对象以string形式返回
+			response.getWriter().write(json);
+			response.getWriter().flush();
+			response.getWriter().close();
+			*/
+			
 			//问题：不确定数据库查询数据是否成功，还有查询成功后和输入信息比较不了，跳转不到相应页面
 			//判断是否存在这样的bean
 			if(null==ad){
@@ -62,13 +71,22 @@ public class LogInServlet extends HttpServlet {
 			//获得会话session
 			request.getSession().setAttribute("administrator", ad);
 			response.sendRedirect("http://localhost:8080/DE_bank/view/mainPage.jsp"); 
-		
+			
+			//取出bean中数据给前端使用
+			String account=ad.getAccount();
+			int id=ad.getId();
+			String Password=ad.getPassword();
+			String json=id+account+Password;
+			response.getWriter().write(json);
+			response.getWriter().flush();
+			response.getWriter().close();
 			}
 		}
 		catch(Exception ex){
 			ex.printStackTrace();	
 
-		}		
+		}	
+		
 	}
 
 }

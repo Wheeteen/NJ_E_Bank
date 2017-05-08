@@ -1,40 +1,40 @@
 package bean;
 
 public class customer {
-	private int id;
-	private int card_number;
-	private String name;
-	private String password;
-	private String authentication_code;
-	public int getId() {
-		return id;
+	private String UserId;
+	private String Accountnumber;
+	private String UserName;
+	private String PIN;
+	private String Cardnumber;
+	public String getUserId() {
+		return UserId;
 	}
-	public void setId(int id) {
-		this.id = id;
+	public void setUserId(String userId) {
+		UserId = userId;
 	}
-	public int getCard_number() {
-		return card_number;
+	public String getAccountnumber() {
+		return Accountnumber;
 	}
-	public void setCard_number(int card_number) {
-		this.card_number = card_number;
+	public void setAccountnumber(String accountnumber) {
+		Accountnumber = accountnumber;
 	}
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return UserName;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String userName) {
+		UserName = userName;
 	}
-	public String getPassword() {
-		return password;
+	public String getPIN() {
+		return PIN;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPIN(String pIN) {
+		PIN = pIN;
 	}
-	public String getAuthentication_code() {
-		return authentication_code;
+	public String getCardnumber() {
+		return Cardnumber;
 	}
-	public void setAuthentication_code(String authentication_code) {
-		this.authentication_code = authentication_code;
+	public void setCardnumber(String cardnumber) {
+		Cardnumber = cardnumber;
 	}
-
+	
 }

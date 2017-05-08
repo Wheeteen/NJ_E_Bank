@@ -48,27 +48,27 @@
 					<span class="keyword">Saving account opening</span>
 				</h3>
 				<div class="rmainCon">
-					<!-- Saving account opening -->
+					<!-- Saving account opening 提交到OpenServlet处理-->
 					<div class="AccountFn openAccount">
-						<form action="" class="openAccountForm">
+						<form action="../OpenServlet" class="openAccountForm" method="post">
 							<div class="username">
 								<label>Input Customer’s Name:</label>
-								<input type="text">
+								<input type="text" name="username">
 							</div>
 							<div class="pwd">
 								<label>Input Customer’s ID Number:</label>
-								<input type="text">
+								<input type="text" name="userid">
 							</div>
 							<div class="pwd">
 								<label>Input Saving Account PIN:</label>
-								<input type="password">
+								<input type="password" name="PIN1">
 							</div>
 							<div class="pwd">
 								<label>Re-Input Saving Account PIN:</label>
-								<input type="password">
+								<input type="password" name="PIN2" >
 							</div>
 							<div class="login">
-								<input type="button" value="Submit">
+								<input type="button" value="Submit" onclick="this.form.submit()">
 							</div>
 						</form>
 					</div>
