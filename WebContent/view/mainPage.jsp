@@ -51,24 +51,32 @@
 					<!-- Saving account opening -->
 					<div class="AccountFn openAccount">
 						<form action="" class="openAccountForm">
-							<div class="username">
+							<div class="inputText">
 								<label>Input Customer’s Name:</label>
-								<input type="text">
+								<input type="text" class="c_name1">
 							</div>
-							<div class="pwd">
+							<!-- input is blank -->
+							<div class="tip_error err_name1"></div>
+							<div class="inputText">
 								<label>Input Customer’s ID Number:</label>
-								<input type="text">
+								<input type="text" class="c_id">
 							</div>
-							<div class="pwd">
+							<!-- input is blank -->
+							<div class="tip_error err_num1"></div>
+							<div class="inputText">
 								<label>Input Saving Account PIN:</label>
-								<input type="password">
+								<input type="password" class="c_pwd1">
 							</div>
-							<div class="pwd">
+							<!-- input is blank -->
+							<div class="tip_error err_pwd1"></div>
+							<div class="inputText">
 								<label>Re-Input Saving Account PIN:</label>
-								<input type="password">
+								<input type="password" class="c_pwd2">
 							</div>
+							<!-- input is blank -->
+							<div class="tip_error err_repwd1"></div>
 							<div class="login">
-								<input type="button" value="Submit">
+								<input type="button" value="Submit" id="openSubmit">
 							</div>
 						</form>
 					</div>
@@ -103,11 +111,11 @@
 					<!-- Saving account deposit -->
 					<div class="AccountFn depositAccount">
 						<form action="" class="depositAccountForm">
-							<div class="username">
+							<div class="inputText">
 								<label> Input User Account Number:</label>
 								<input type="text">
 							</div>
-							<div class="username">
+							<div class="inputText">
 								<label> Input Deposit Amount:</label>
 								<input type="text">
 							</div>
@@ -116,23 +124,27 @@
 							</div>
 						</form>
 					</div>
-					<!-- pop-up box about the authentication code when the amount>50000 -->
-					<div class="auth">
-						<h3>Please input the authentication code:</h3>
-						<form action="" class="authForm">
-							<div class="username">
-								<input type="text">
-							</div>
-							<div class="login">
-								<input type="button" value="Submit">
-							</div>
-						</form>
-					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+	<!-- 覆盖一整个页面的灰屏 -->
+    <div class="grey"></div>
+    <!-- pop-up box about the authentication code when the amount>50000 -->
+    <div class="auth">
+       <div class="close">
+        ×
+       </div>
+		<h3>Please input the authentication code</h3>
+		<form action="" class="authForm">
+			<div class="username">
+				<input type="text">
+			</div>
+			<div class="login">
+				<input type="button" value="Submit">
+			</div>
+		</form>
+	</div>
 	<script src="../js/jquery-2.1.4.min.js" type="text/javascript"></script>
 	<script src="../js/mainPage.js"></script>
 </body>

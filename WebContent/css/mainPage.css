@@ -63,7 +63,7 @@ header{
 	border-radius: 4px;
 	margin-right: 15px;
 }
-.left_con h3,.right_con h3{
+.left_con h3,.right_con h3,.auth h3{
 	width: 100%;
 	text-align: center;
 	font-weight: normal;
@@ -135,10 +135,16 @@ header{
 	margin-top: 50px;
 	display: none;
 }
-form div{
+.inputText,.login{
 	width: 600px;
-	margin: 0 auto 20px;
+	margin: 10px auto 5px;
 	text-align: center;
+}
+.tip_error{
+	height: 15px;
+	margin-left: 428px;
+	text-align: left;
+	color: #EA2000;
 }
 form label{
 	width: 250px;
@@ -187,12 +193,48 @@ input:focus{
 	opacity: 0.8;
 	filter: alpha(opacity = 80);
 }
+
+.grey{
+	position: fixed;
+	top:0;
+	width:100%;
+	height: 100%;
+	z-index: 1000;
+	background: rgba(0,0,0,0.75);
+	display: none;
+}
+
 .auth{
 	display: none;
+	position: fixed;
+	top:180px;
+	left:50%;
+	margin-left: -280px;
+	width:560px;
+	z-index: 1005;
+	background: #fcfcfc;
+    border-radius: 5px;
+    padding: 50px 0 90px;
+}
+.auth h3{
+	border-bottom: none;
+	margin-top: 15px;
+}
+.auth form div{
+	width: 100%;
+}
+.auth input{
+	width:300px;
+}
+.close{
+	width:29px;
+	height: 38px;
 	position: absolute;
-	width: 500px;
-	margin-left: 177px;
-	background-color: #ccc;
-	top: 0;
-	left: 0;
+	font-family: 'Adobe 宋体 Std';
+	font-weight: bold;
+	top:0px;
+	right:15px;
+	font-size: 30px;
+	color: #665a5f;
+    cursor:pointer;
 }
