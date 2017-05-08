@@ -35,31 +35,7 @@ public class LogInServlet extends HttpServlet {
     
     //对请求进行处理
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try{
-			String username = request.getParameter("username");
-			String password = request.getParameter("password");
-			
-			administrator ad=administratorDAO.get(username,password);   //数据库获取uname,psd,返回bean
-			
-			//判断是否存在这样的bean
-			if(null==ad){
-				request.setAttribute("msg", "账号密码错误");
-				 
-				response.sendRedirect("http://localhost:8080/DE_bank/view/mainPage.jsp"); 	
-			}
-			
-			//获得会话session
-			request.getSession().setAttribute("user", ad);
-			//response.sendRedirect("http://localhost:8080/DE_bank/view/mainPage.jsp"); 
-		
-			
-		}
-	
-			
-		catch(Exception ex){
-			ex.printStackTrace();	
-
-		}		
+		doPost(request, response);
 	}
 
 	/**
@@ -67,7 +43,32 @@ public class LogInServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		doGet(request, response);
+		
+		try{
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			
+			administrator ad=administratorDAO.get(username,password);   //数据库获取uname,psd,返回bean
+			
+			
+			//问题：不确定数据库查询数据是否成功，还有查询成功后和输入信息比较不了，跳转不到相应页面
+			//判断是否存在这样的bean
+			if(null==ad){
+				request.setAttribute("msg", "账号密码错误");
+				 
+				response.sendRedirect("http://localhost:8080/DE_bank/view/index.jsp"); 	
+			}else
+			{
+			//获得会话session
+			request.getSession().setAttribute("administrator", ad);
+			response.sendRedirect("http://localhost:8080/DE_bank/view/mainPage.jsp"); 
+		
+			}
+		}
+		catch(Exception ex){
+			ex.printStackTrace();	
+
+		}		
 	}
 
 }
