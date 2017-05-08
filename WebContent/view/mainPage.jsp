@@ -74,13 +74,13 @@
 					</div>
 					<!-- Saving account inquiry -->
 					<div class="AccountFn inquiryAccount">
-						<form action="" class="inquiryAccountForm">
+						<form action="../InquiryServlet" class="inquiryAccountForm" method="post">
 							<div class="username">
 								<label>Input Customer’s ID Number:</label>
-								<input type="text">
+								<input type="text" name="CustomerID">
 							</div>
 							<div class="login">
-								<input type="button" value="Submit">
+								<input type="button" value="Submit" onclick="this.form.submit()">
 							</div>
 						</form>
 					</div>

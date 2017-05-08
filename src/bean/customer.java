@@ -6,6 +6,7 @@ public class customer {
 	private String UserName;
 	private String PIN;
 	private String Cardnumber;
+	private String Status;
 	public String getUserId() {
 		return UserId;
 	}
@@ -35,6 +36,13 @@ public class customer {
 	}
 	public void setCardnumber(String cardnumber) {
 		Cardnumber = cardnumber;
+	}
+	public String getStatus(){
+		return Status;
+	}
+	public void setStatus(String status) {
+		// TODO Auto-generated method stub
+		Status=status;
 	}
 	
 }

@@ -1,5 +1,5 @@
 # Host: 127.0.0.1  (Version: 5.5.15)
-# Date: 2017-05-08 20:44:03
+# Date: 2017-05-09 00:07:17
 # Generator: MySQL-Front 5.3  (Build 4.269)
 
 /*!40101 SET NAMES gb2312 */;
@@ -33,6 +33,7 @@ CREATE TABLE `customer_info` (
   `PIN` varchar(11) NOT NULL,
   `cardnumber` varchar(16) NOT NULL,
   `accountnumber` varchar(14) NOT NULL,
+  `status` varchar(1) NOT NULL,
   PRIMARY KEY (`userid`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -40,7 +41,7 @@ CREATE TABLE `customer_info` (
 # Data for table "customer_info"
 #
 
-INSERT INTO `customer_info` VALUES ('725713','Nick','725713','1090390079250374','57199524590084');
+INSERT INTO `customer_info` VALUES ('123456','Jessy','123456','2070246745018007','07400579191564','1'),('1314','test status','1314','1629611232791088','61859859609304','0'),('725713','Nick','725713','5842513045193032','60037960012757','1');
 
 #
 # Structure for table "record_info"

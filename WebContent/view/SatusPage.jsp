@@ -3,9 +3,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>Insert title here</title>
 </head>
-<body>傻逼！你已经开户成功啦！账户状态为正常！
+<body>
+以下该账户的状态及相关信息：ＸＸＸＸ
+accountNumber:
+Card number:
+UserName:
+status: “Normal”, “Locked”, “Not activated”, “Not Available” 
 </body>
 </html>

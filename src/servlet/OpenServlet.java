@@ -52,6 +52,7 @@ public class OpenServlet extends HttpServlet {
 		NumberRandom RN=new NumberRandom();
 		String accountnumber=RN.generateString(14);
 		String cardnumber=RN.generateString(16);
+		String status="0";
 		
 
 		//判断返回的rs结果集是否>0,大于0表示插入操作成功
@@ -60,7 +61,7 @@ public class OpenServlet extends HttpServlet {
 		int rs;
 		
 		try {
-			rs = customerDAO.insert(userid,username,PIN2,accountnumber,cardnumber);
+			rs = customerDAO.insert(userid,username,PIN2,accountnumber,cardnumber,status);
 			if(rs>0){
 				//request.getSession().setAttribute("Open", "rs");
 				response.sendRedirect("http://localhost:8080/DE_bank/view/OpenSuccess.jsp");
