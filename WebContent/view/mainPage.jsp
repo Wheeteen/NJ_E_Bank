@@ -59,7 +59,7 @@
 							<div class="tip_error err_name1"></div>
 							<div class="inputText">
 								<label>Input Customer’s ID Number:</label>
-								<input type="text" class="c_id">
+								<input type="text" class="c_id1">
 							</div>
 							<!-- input is blank -->
 							<div class="tip_error err_num1"></div>
@@ -74,7 +74,7 @@
 								<input type="password" class="c_pwd2">
 							</div>
 							<!-- input is blank -->
-							<div class="tip_error err_repwd1"></div>
+							<div class="tip_error err_pwd2"></div>
 							<div class="login">
 								<input type="button" value="Submit" id="openSubmit">
 							</div>
@@ -83,28 +83,31 @@
 					<!-- Saving account inquiry -->
 					<div class="AccountFn inquiryAccount">
 						<form action="" class="inquiryAccountForm">
-							<div class="username">
+							<div class="inputText">
 								<label>Input Customer’s ID Number:</label>
-								<input type="text">
+								<input type="text" class="c_id2">
 							</div>
+							<div class="tip_error err_num2"></div>
 							<div class="login">
-								<input type="button" value="Submit">
+								<input type="button" value="Submit" id="inquirySubmit">
 							</div>
 						</form>
 					</div>
 					<!-- Saving account withdrawal -->
 					<div class="AccountFn withdrawalAccount">
 						<form action="" class="withdrawalAccountForm">
-							<div class="username">
+							<div class="inputText">
 								<label> Input User Account Number:</label>
-								<input type="text">
+								<input type="text" class="userNum1">
 							</div>
-							<div class="username">
+							<div class="tip_error err_userNum1"></div>
+							<div class="inputText">
 								<label> Input Withdrawal Amount:</label>
-								<input type="text">
+								<input type="text" class="withAmount1">
 							</div>
+							<div class="tip_error err_amount1"></div>
 							<div class="login">
-								<input type="button" value="Confirm">
+								<input type="button" value="Confirm" id="withdrawalSubmit">
 							</div>
 						</form>
 					</div>
@@ -113,16 +116,26 @@
 						<form action="" class="depositAccountForm">
 							<div class="inputText">
 								<label> Input User Account Number:</label>
-								<input type="text">
+								<input type="text" class="userNum2">
 							</div>
+							<div class="tip_error err_userNum2"></div>
 							<div class="inputText">
 								<label> Input Deposit Amount:</label>
-								<input type="text">
+								<input type="text" class="dsitAmount1">
 							</div>
+							<div class="tip_error err_amount2"></div>
 							<div class="login">
-								<input type="button" value="Confirm">
+								<input type="button" value="Confirm" id="depositSubmit">
 							</div>
 						</form>
+					</div>
+					
+					<!-- 后台返回的信息显示区域 -->
+					<div class="info">
+						<h3>You have opened the saving account successfully</h3>
+						<p><label>Customer’s Name:</label><span>JessyLiSuzhen</span></p>
+						<p><label>Saving account number:</label><span>12345678901254</span></p>
+						<p><label>Card number:</label><span>1234567890125415</span></p>
 					</div>
 				</div>
 			</div>
@@ -137,11 +150,12 @@
        </div>
 		<h3>Please input the authentication code</h3>
 		<form action="" class="authForm">
-			<div class="username">
-				<input type="text">
+			<div class="inputText">
+				<input type="text" class="auth_code">
 			</div>
+			<div class="tip_error err_auth"></div>
 			<div class="login">
-				<input type="button" value="Submit">
+				<input type="button" value="Submit" id="authSubmit">
 			</div>
 		</form>
 	</div>

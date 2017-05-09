@@ -1,6 +1,6 @@
 @CHARSET "UTF-8";
 
-html,body,h1,div,span,form,input,h1,h3,header,img,ul,li,label{
+html,body,h1,div,span,form,input,h1,h3,header,img,ul,li,label,p{
 	padding:0;
 	margin: 0;
 }
@@ -135,9 +135,16 @@ header{
 	margin-top: 50px;
 	display: none;
 }
-.inputText,.login{
+.info{
+	display: none;
+	overflow: hidden;
+}
+.inputText,.login,.info p{
 	width: 600px;
 	margin: 10px auto 5px;
+	
+}
+.inputText,.login{
 	text-align: center;
 }
 .tip_error{
@@ -146,12 +153,20 @@ header{
 	text-align: left;
 	color: #EA2000;
 }
-form label{
+
+form label,.info label{
 	width: 250px;
 	text-align: right;	
 	display: inline-block;
 	margin-right: 8px;
 	font-size: 16px;
+}
+.info label{
+	width: 300px;
+}
+.info p,.info p label{
+	font-size: 18px !important;
+	margin-bottom: 10px;
 }
 form input{
 	width: 280px;
@@ -226,6 +241,9 @@ input:focus{
 .auth input{
 	width:300px;
 }
+.auth .login{
+	margin-top: 10px !important;
+}
 .close{
 	width:29px;
 	height: 38px;
@@ -237,4 +255,13 @@ input:focus{
 	font-size: 30px;
 	color: #665a5f;
     cursor:pointer;
+}
+.err_auth{
+	margin-left: 135px;
+}
+.info h3{
+	text-align: center;
+	border-bottom: 0;
+	color: #0F88EB;
+	margin: 20px auto;
 }
