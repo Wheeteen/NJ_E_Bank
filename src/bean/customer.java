@@ -1,44 +1,48 @@
 package bean;
 
 public class customer {
-	private int id;
-	private int card_number;
-	private String name;
-	private String password;
-	private String authentication_code;
+	private String UserId;
+	private String Accountnumber;
+	private String UserName;
+	private String PIN;
+	private String Cardnumber;
+	private String Status;
+	public String getUserId() {
+		return UserId;
+	}
+	public void setUserId(String userId) {
+		UserId = userId;
+	}
+	public String getAccountnumber() {
+		return Accountnumber;
+	}
+	public void setAccountnumber(String accountnumber) {
+		Accountnumber = accountnumber;
+	}
+	public String getUserName() {
+		return UserName;
+	}
+	public void setUserName(String userName) {
+		UserName = userName;
+	}
+	public String getPIN() {
+		return PIN;
+	}
+	public void setPIN(String pIN) {
+		PIN = pIN;
+	}
+	public String getCardnumber() {
+		return Cardnumber;
+	}
+	public void setCardnumber(String cardnumber) {
+		Cardnumber = cardnumber;
+	}
+	public String getStatus(){
+		return Status;
+	}
+	public void setStatus(String status) {
+		// TODO Auto-generated method stub
+		Status=status;
+	}
 	
-	public customer(){
-		
-	}
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
-	public int getCard_number() {
-		return card_number;
-	}
-	public void setCard_number(int card_number) {
-		this.card_number = card_number;
-	}
-	public String getName() {
-		return name;
-	}
-	public void setName(String name) {
-		this.name = name;
-	}
-	public String getPassword() {
-		return password;
-	}
-	public void setPassword(String password) {
-		this.password = password;
-	}
-	public String getAuthentication_code() {
-		return authentication_code;
-	}
-	public void setAuthentication_code(String authentication_code) {
-		this.authentication_code = authentication_code;
-	}
-
 }

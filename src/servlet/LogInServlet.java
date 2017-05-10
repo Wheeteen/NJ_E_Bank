@@ -3,15 +3,18 @@ package servlet;
 //我完成了login功能
 // 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.security.MessageDigest;
 
 import bean.administrator;
 import dao.administratorDAO;
-
+import util.MD5;
 
 //用servet调用DAO取得数据，后在jsp页面上显示出来
 /**
@@ -37,16 +40,15 @@ public class LogInServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		
+	  
 		try{
 			String username = request.getParameter("username");
-			String password = request.getParameter("password");
+			String password = MD5.MD5(request.getParameter("password"));
 			
 			administrator ad=administratorDAO.get(username,password);   //数据库获取uname,psd,返回bean
 			
@@ -74,5 +76,7 @@ public class LogInServlet extends HttpServlet {
 
 		}		
 	}
+	
+	
 
 }

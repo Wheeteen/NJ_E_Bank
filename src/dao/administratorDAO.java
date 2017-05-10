@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import bean.administrator;
 import util.DBConnection;
@@ -38,14 +39,12 @@ public class administratorDAO {
     public static administrator get(String account, String password) {
     	administrator bean = null;
 		 
-    	
-		String sql = "select * from administrator_info where account = ? and password=?";     //将account=nick,password=725713的所有信息抽取
+		String sql = "select * from administrator_info where account = ? and password=?";
         try (Connection c = DBConnection.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
         	ps.setString(1, account);
         	ps.setString(2, password);
             ResultSet rs =ps.executeQuery();    //执行sql
             
- 
             //遍历结果集
             if (rs.next()) {
                 bean = new administrator();

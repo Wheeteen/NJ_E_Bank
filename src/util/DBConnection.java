@@ -13,10 +13,10 @@ import bean.administrator;
 public class DBConnection {
 	static String ip = "127.0.0.1";
 	static int port = 3306;
-	static String database = "e_bank2";
+	static String database = "e_bank";
 	static String encoding = "UTF-8";
 	static String loginName = "root";
-	static String password = "admin";
+	static String password = "";
 
 	static {
 		try {

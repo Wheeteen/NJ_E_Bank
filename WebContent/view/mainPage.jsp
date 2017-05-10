@@ -133,6 +133,7 @@
 					<!-- 后台返回的信息显示区域 -->
 					<div class="info">
 						<h3>You have opened the saving account successfully</h3>
+						<div class="detail"></div>
 						<p><label>Customer’s Name:</label><span>JessyLiSuzhen</span></p>
 						<p><label>Saving account number:</label><span>12345678901254</span></p>
 						<p><label>Card number:</label><span>1234567890125415</span></p>

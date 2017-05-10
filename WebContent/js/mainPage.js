@@ -52,18 +52,28 @@
 								
 								//ajax将数据传到后台
 								$.ajax({
-									url: "",
+									url: "../OpenServlet",
 									data:{
-										"username": username,
-										"password": password
+										"username": c_name,
+										"userid": c_id,
+										"PIN2": c_pwd1
 									},
 									dataType: "json",
 									type: "POST",
 									success: function(data){
+										console.log(data);
 										if(data.success == 1){
-											
+											$(".info h3").text("You have opened the saving account successfully");
+											var html = "";
+											html+="<p><label>Customer’s Name:</label><span>"+c_name+"</span></p>"
+												+"<p><label>Saving account number:</label><span>"+data.accountNum+"</span></p>"
+												+"<p><label>Card number:</label><span>+"+data.cardNum+"</span></p>";
+											$(".info .detail").append(html);
+											$(".openAccount").hide();
+											$(".info").fadeIn(300);
+												
 										}else{
-											$(".err_pwd").text(data.msg);
+											$(".err_num1").text(data.msg);
 										}
 									}
 								})
