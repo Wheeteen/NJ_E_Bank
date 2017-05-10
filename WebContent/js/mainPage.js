@@ -67,11 +67,14 @@
 											var html = "";
 											html+="<p><label>Customer’s Name:</label><span>"+c_name+"</span></p>"
 												+"<p><label>Saving account number:</label><span>"+data.accountNum+"</span></p>"
-												+"<p><label>Card number:</label><span>+"+data.cardNum+"</span></p>";
-											$(".info .detail").append(html);
+												+"<p><label>Card number:</label><span>"+data.cardNum+"</span></p>";
+											$(".info .detail").html(html);
 											$(".openAccount").hide();
 											$(".info").fadeIn(300);
-												
+											$(".c_name1").val("");	
+											$(".c_id1").val("");
+											$(".c_pwd1").val("");
+											$(".c_pwd2").val("");
 										}else{
 											$(".err_num1").text(data.msg);
 										}
@@ -118,18 +121,27 @@
 				
 				//ajax将数据传到后台
 				$.ajax({
-					url: "",
+					url: "../InquiryServlet",
 					data:{
-//						"username": username,
-//						"password": password
+						"CustomerID": c_id,
 					},
 					dataType: "json",
 					type: "POST",
 					success: function(data){
 						if(data.success == 1){
-							
+							console.log(data);
+							$(".info h3").text("You have inquiried the saving account successfully");
+							var html = "";
+							html+="<p><label>Customer’s Name:</label><span>"+data.name+"</span></p>"
+								+"<p><label>Saving account number:</label><span>"+data.accountNum+"</span></p>"
+								+"<p><label>Card number:</label><span>"+data.cardNum+"</span></p>"
+								+"<p><label>Online Banking Account Status :</label><span>"+data.status+"</span></p>";
+							$(".info .detail").html(html);
+							$(".inquiryAccount").hide();
+							$(".info").fadeIn(300);	
+							$(".c_id2").val("");
 						}else{
-							$(".err_pwd").text(data.msg);
+							$(".err_num2").text(data.msg);
 						}
 					}
 				})
@@ -159,16 +171,16 @@
 	var statusWD;
 	//withdrawal输入用户名的时候：当离开的时候,验证是否存在这个用户的user account number
 	$(".userNum1").on("blur",function(){
-		blurUserNum(".userNum1",".err_userNum1","",error);
+		blurUserNum(".userNum1",".err_userNum1",error);
 	})
 	
 	//deposit输入用户名的时候：当离开的时候,验证是否存在这个用户的user account number
 	$(".userNum2").on("blur",function(){
-		blurUserNum(".userNum2",".err_userNum2","",error1);//将一个存在的数存进去
+		blurUserNum(".userNum2",".err_userNum2",error1);//将一个存在的数存进去
 	})
 	
 	//将input user account number的blur封装成一个函数
-	function blurUserNum(target,err_name,url,err){
+	function blurUserNum(target,err_name,err){
 		var userNum = $.trim($(target).val()),
 			v_UNum = ifEmpty(userNum);
 		if(v_UNum){
@@ -177,13 +189,14 @@
 				
 				//ajax将数据传到后台
 				$.ajax({
-					url:url,
+					url:"../getCountNum",
 					data:{
-//							"username": userNum,
+							"AccountNumber": userNum,
 					},
 					dataType: "json",
 					type: "POST",
 					success: function(data){
+						console.log(data);
 						if(data.success == 1){
 							err["userNum"] = 0;
 						}else{
@@ -304,13 +317,14 @@
 			
 			//ajax将数据传到后台
 			$.ajax({
-				url: "",
+				url: "../authCode",
 				data:{
-//					"username": username,
+					"authCode": code,
 				},
 				dataType: "json",
 				type: "POST",
 				success: function(data){
+					console.log(data);
 					if(data.success == 1){
 						if(statusWD == "withdrawal"){
 							error.withAmount = 0;
@@ -323,7 +337,7 @@
 						$(".auth").fadeOut(300);
 						$(".auth_code").val("");
 					}else{
-//						$(".err_auth").text(data.msg);
+						$(".err_auth").text("The authentication code is wrong");
 						return false;
 					}
 				}

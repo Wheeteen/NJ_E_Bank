@@ -1,22 +1,29 @@
 package servlet;
 
-//ÎÒÍê³ÉÁËlogin¹¦ÄÜ
-// 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.security.MessageDigest;
 
 import bean.administrator;
 import dao.administratorDAO;
+import dao.customerDAO;
+import net.sf.json.JSONObject;
 import util.MD5;
+import util.NumberRandom;
 
-//ÓÃservetµ÷ÓÃDAOÈ¡µÃÊı¾İ£¬ºóÔÚjspÒ³ÃæÉÏÏÔÊ¾³öÀ´
+
+/*
+ * LoginServletå®Œæˆç™»å½•é¡µé¢è·³è½¬åŠŸèƒ½
+ * å®ç°ï¼šæŸ¥è¯¢æ•°æ®åº“administrator_infoï¼Œè¿”å›Anameå’Œpwd.
+ * ä¸è¾“å…¥ä¿¡æ¯æ¯”è¾ƒï¼Œç›¸åŒåˆ™è·³è½¬åˆ°mainPage,ä¸ç›¸åŒæç¤ºé”™è¯¯ä¿¡æ¯
+ */
 /**
  * Servlet implementation class LogInServlet
  */
@@ -36,47 +43,45 @@ public class LogInServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
     
-    //¶ÔÇëÇó½øĞĞ´¦Àí
+    //å¯¹è¯·æ±‚è¿›è¡Œå¤„ç†
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
+
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-	  
+		
 		try{
 			String username = request.getParameter("username");
 			String password = MD5.MD5(request.getParameter("password"));
 			
-			administrator ad=administratorDAO.get(username,password);   //Êı¾İ¿â»ñÈ¡uname,psd,·µ»Øbean
-			
 			String json = "";
-			//ÎÊÌâ£º²»È·¶¨Êı¾İ¿â²éÑ¯Êı¾İÊÇ·ñ³É¹¦£¬»¹ÓĞ²éÑ¯³É¹¦ºóºÍÊäÈëĞÅÏ¢±È½Ï²»ÁË£¬Ìø×ª²»µ½ÏàÓ¦Ò³Ãæ
-			//ÅĞ¶ÏÊÇ·ñ´æÔÚÕâÑùµÄbean
+			administrator ad=administratorDAO.get(username,password);  
 			if(null==ad){
-				request.setAttribute("msg", "ÕËºÅÃÜÂë´íÎó");
-				json="{\"success\": 0,\"msg\":\"Something wrong with account or password\"}";
-//				response.sendRedirect("view/index.jsp"); 	
+//				request.setAttribute("msg", "wrong account or password");
+				json="{\"success\": 0,\"msg\":\"Something wrong with account or password\"}";	
 			}else
 			{
-			//»ñµÃ»á»°session
-			request.getSession().setAttribute("administrator", ad);
-			json="{\"success\": 1}";
-//			response.sendRedirect("view/mainPage.jsp"); 
-		
+			//è·å¾—ä¼šè¯session
+				request.getSession().setAttribute("admin", ad);
+				request.getSession().setAttribute("account", ad.getAccount());
+				request.getSession().setAttribute("code", ad.getCode());
+				json="{\"success\": 1}";
 			}
+			
 			response.getWriter().write(json);
 			response.getWriter().flush();
 			response.getWriter().close();
+			
 		}
 		catch(Exception ex){
 			ex.printStackTrace();	
 
-		}		
+		}	
+		
 	}
-	
-	
 
 }

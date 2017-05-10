@@ -5,31 +5,43 @@ import java.util.Date;
 public class record {
 	
 	private int id;
-	private int cid;
-	private float count;  //½»Ò×½ğ¶î
-	private String type;  //½»Ò×ÀàĞÍ
-	private Date tdate;  //½»Ò×ÈÕÆÚ
-	
-	public record(){
-		
-	}
+	private String accountnumber;
+	private int amount;   //æ“ä½œæ•°é‡
+	private int balance;
+	private String authentication_code; //æƒé™ç ï¼šé»˜è®¤ä¸ºnull,>50000éœ€è¦æ’å…¥
+	private String type;   //æ“ä½œç±»å‹ï¼š0ï¼šå­˜æ¬¾ï¼Œ1ï¼šå–æ¬¾
+	private Date tdate;  //æ“ä½œæ—¥æœŸ
+    private String uid;  //å¤–é”®
+    
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public int getCid() {
-		return cid;
+	public String getAccountnumber() {
+		return accountnumber;
 	}
-	public void setCid(int cid) {
-		this.cid = cid;
+	public void setAccountnumber(String accountnumber) {
+		this.accountnumber = accountnumber;
 	}
-	public float getCount() {
-		return count;
+	public int getAmount() {
+		return amount;
 	}
-	public void setCount(float count) {
-		this.count = count;
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	public int getBalance() {
+		return balance;
+	}
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+	public String getAuthentication_code() {
+		return authentication_code;
+	}
+	public void setAuthentication_code(String authentication_code) {
+		this.authentication_code = authentication_code;
 	}
 	public String getType() {
 		return type;
@@ -43,5 +55,12 @@ public class record {
 	public void setTdate(Date tdate) {
 		this.tdate = tdate;
 	}
+	public String getUid() {
+		return uid;
+	}
+	public void setUid(String uid) {
+		this.uid = uid;
+	}
+	
 	
 }

@@ -163,6 +163,7 @@ form label,.info label{
 }
 .info label{
 	width: 300px;
+	margin-right: 20px;
 }
 .info p,.info p label{
 	font-size: 18px !important;

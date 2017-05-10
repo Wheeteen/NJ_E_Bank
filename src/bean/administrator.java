@@ -5,7 +5,14 @@ public class administrator {
 	private int id;
 	private String account;
 	private String password;
+	private String code;
 	
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
 	public administrator(){
 		
 	}

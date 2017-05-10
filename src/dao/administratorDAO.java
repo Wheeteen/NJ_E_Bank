@@ -1,14 +1,12 @@
 package dao;
-//¸üĞÂÁËget²Ù×÷,get²»µ½Êı¾İ¿âÀïµÄ¶«Î÷
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
 
 import bean.administrator;
 import util.DBConnection;
-//¾ßÌåCRUD²Ù×÷Î´Ğ´
+//å…·ä½“CRUDæ“ä½œæœªå†™
 
 public class administratorDAO {
 	
@@ -39,28 +37,30 @@ public class administratorDAO {
     public static administrator get(String account, String password) {
     	administrator bean = null;
 		 
-		String sql = "select * from administrator_info where account = ? and password=?";
+    	
+		String sql = "select * from administrator_info where Aname= ? and pwd=?";     //å°†account=nick,password=725713çš„æ‰€æœ‰ä¿¡æ¯æŠ½å–
         try (Connection c = DBConnection.getConnection(); PreparedStatement ps = c.prepareStatement(sql)) {
         	ps.setString(1, account);
         	ps.setString(2, password);
-            ResultSet rs =ps.executeQuery();    //Ö´ĞĞsql
+            ResultSet rs =ps.executeQuery();    //æ‰§è¡Œsql
             
-            //±éÀú½á¹û¼¯
+ 
+            //éå†ç»“æœé›†
             if (rs.next()) {
                 bean = new administrator();
-                int id = rs.getInt("id"); //Í¨¹ıÁĞÃû»ñÈ¡½á¹û¼¯ÖĞµÄid
                 
-                //¸øad.bean¸³Öµ
-                bean.setAccount(account); 
-                bean.setPassword(password);
-                bean.setId(id);
+                //å°†æ‰§è¡Œåçš„ç»“æœæ”¾å…¥beanå¯¹è±¡é‡Œ
+                bean.setAccount(rs.getString("Aname")); 
+                bean.setPassword(rs.getString("pwd"));
+                bean.setId(rs.getInt("id"));
+                bean.setCode(rs.getString("Acode"));
             }
  
         } catch (SQLException e) {
  
             e.printStackTrace();
         }
-        return bean;
+        return bean;   //è¿”å›beanå¯¹è±¡
         
 	}
 

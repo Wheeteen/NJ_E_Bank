@@ -7,6 +7,8 @@ public class customer {
 	private String PIN;
 	private String Cardnumber;
 	private String Status;
+	private int Balance;
+	
 	public String getUserId() {
 		return UserId;
 	}
@@ -43,6 +45,14 @@ public class customer {
 	public void setStatus(String status) {
 		// TODO Auto-generated method stub
 		Status=status;
+	}
+	public int getBalance(){
+		
+		return Balance;
+	}
+	public void setBalance(int balance) {
+		// TODO Auto-generated method stub
+		Balance=balance;
 	}
 	
 }
