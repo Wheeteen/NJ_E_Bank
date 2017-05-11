@@ -24,6 +24,7 @@
 					}
 				%>
 				<span><%=admin %></span>
+				<span class="logOut">log out</span>
 			</div>
 		</div>
 	</header>

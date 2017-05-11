@@ -143,20 +143,12 @@ public class customerDAO {
             if (rs.next()) {
                 bean = new customer();
                 
-                String userid=rs.getString("Cid");
-               String username=rs.getString("Cname");
-               String PIN=rs.getString("PIN");
                 String accountnumber=rs.getString("Anumber");
-               String cardnumber=rs.getString("Cnumber");
                 String status=rs.getString("status");
                 int balance=rs.getInt("balance");
                
                 //给bean赋值
-                bean.setUserId(userid);
-                bean.setUserName(username);
-                bean.setPIN(PIN);
                 bean.setAccountnumber(accountnumber);
-                bean.setCardnumber(cardnumber);
                 bean.setStatus(status);
                 bean.setBalance(balance);
             }
@@ -198,37 +190,37 @@ public class customerDAO {
 		
 	}
 
-	public static int insertBalance(String accountNumber,int balance) throws SQLException {
-		// TODO Auto-generated method stub
-		// TODO Auto-generated method stub
-		
-		String sql = "insert into customer_info (Cid,Cname,PIN,Anumber,Cnumber,status,balance) value(?,?,?,?,?,?,?)"; 
-		Connection c = DBConnection.getConnection();
-		PreparedStatement ps = c.prepareStatement(sql);
-        ps.setString(1, "newCid6");    //insert时候需要提供变量的Cid,不能重复，否则出现Exception...待处理
-        ps.setString(2, "newCname");
-        ps.setString(3, "newPIN");
-        ps.setString(4, "newAnumber");
-        ps.setString(5, "newCnumber");
-        ps.setString(6, "newstatus");
-        ps.setInt(7, balance);
-        int rs =ps.executeUpdate();    //执行sql,向Customer_info插入5条信息
-		return rs;
-            
-		            
-			
-
-	}
+//	public static int insertBalance(String accountNumber,int balance) throws SQLException {
+//		// TODO Auto-generated method stub
+//		// TODO Auto-generated method stub
+//		
+//		String sql = "insert into customer_info (Cid,Cname,PIN,Anumber,Cnumber,status,balance) value(?,?,?,?,?,?,?)"; 
+//		Connection c = DBConnection.getConnection();
+//		PreparedStatement ps = c.prepareStatement(sql);
+//        ps.setString(1, "newCid6");    //insert时候需要提供变量的Cid,不能重复，否则出现Exception...待处理
+//        ps.setString(2, "newCname");
+//        ps.setString(3, "newPIN");
+//        ps.setString(4, "newAnumber");
+//        ps.setString(5, "newCnumber");
+//        ps.setString(6, "newstatus");
+//        ps.setInt(7, balance);
+//        int rs =ps.executeUpdate();    //执行sql,向Customer_info插入5条信息
+//		return rs;
+//            
+//		            
+//			
+//
+//	}
 
 	public static int UpdateBalance(String accountNumber, int balance) throws SQLException {
 		
 		// TODO Auto-generated method stub
-		String sql="update customer_info set balance=1000 where Anumber=?";
+		String sql="update customer_info set balance=? where Anumber=?";
 		Connection c = DBConnection.getConnection();
 		PreparedStatement ps = c.prepareStatement(sql);
-        ps.setString(1, accountNumber);    //insert时候需要提供变量的Cid,不能重复，否则出现Exception...待处理
-        //ps.setInt(2, balance);
-        int rs =ps.executeUpdate();    //执行sql,向Customer_info插入5条信息
+        ps.setInt(1, balance);    
+        ps.setString(2, accountNumber);
+        int rs =ps.executeUpdate();   
 		return rs;
 	}
 	

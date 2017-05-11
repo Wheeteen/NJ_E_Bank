@@ -265,12 +265,12 @@
 	}
 	//withdrawal  submit
 	$("#withdrawalSubmit").on("click",function(){
-		WDSubmit(error,".userNum1",".withAmount1","");
+		WDSubmit(error,".userNum1",".withAmount1","../WithdrawServlet2");
 	})
 	
 	//deposit submit
 	$("#depositSubmit").on("click",function(){
-		WDSubmit(error1,".userNum2",".dsitAmount1","");
+		WDSubmit(error1,".userNum2",".dsitAmount1","../DepositServlet2");
 	})
 	
 	//withdrawal and deposit submit -->function
@@ -280,27 +280,49 @@
 		}else if(err["withAmount"] == 1){
 			return false;
 		}else{
-			var userNum = $.trim($(userNum).val()),
-				amount = $.trim($(Amount).val());
+			var userNum1 = $.trim($(userNum).val()),
+				amount = $.trim($(Amount).val()),
+				selected,
+				errMsg,
+				hideForm,
+				addDed;
 			
+			if(userNum == ".userNum2" ){
+				selected = "deposit";
+				errMsg = ".err_amount2";
+				hideForm = ".depositAccount";
+				addDed = "added";
+			}else{
+				selected = "withdrawal";
+				errMsg = ".err_amount1";
+				hideForm = ".withdrawalAccount";
+				addDed = "deducted";
+			}
 			//ajax将数据传到后台
 			$.ajax({
 				url: url,
 				data:{
-					"userNum": userNum,
-					"amount": amount
+					"AccountNumber": userNum1,
+					"Amount": amount
 				},
 				dataType: "json",
 				type: "POST",
 				success: function(data){
 					if(data.success == 1){
-						
+						console.log(data);
+						$(".info h3").text("The "+selected+" action is completed  and "+amount+"RMB is "+addDed+" to the balance");
+						var html = "";
+						html+="<p><label>User Account Number:</label><span>"+userNum1+"</span></p>"
+							+"<p><label>Original balances:</label><span>"+data.oriBalance+"</span></p>"
+							+"<p><label>Existing balances:</label><span>"+data.exiBalance+"</span></p>";
+						$(".info .detail").html(html);
+						$(hideForm).hide();
+						$(".info").fadeIn(300);	
+						$(userNum).val("");
+						$(Amount).val("");
 					}else{
-						if(userNum == ".userNum1" ){
-							$(".err_amount1").text(data.msg);
-						}else{
-							$(".err_amount2").text(data.msg);
-						}
+						
+						$(errMsg).text(data.msg);
 						return false;
 					}
 				}
@@ -379,4 +401,24 @@
     
     //auth form enter
     getEnter(".authForm","#authSubmit");
+    
+    
+    //click log out
+    
+    $(".logOut").on("click",function(){
+    	//ajax将数据传到后台
+			$.ajax({
+				url: "../LogOutServlet",
+				dataType: "json",
+				success: function(data){
+					console.log(data);
+					if(data.success == 1){						
+						window.location.href="index.jsp";
+					}else{
+						//console.log(data.msg);//理论上来说应该是没有err的
+						return false;
+					}
+				}
+			})
+    })
 })();
