@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Giant Bank</title>
+	<link rel="stylesheet" href="../css/userStyle.css"/>
+</head>
+<body>
+	<header>
+		<div class="g_container">
+			<div class="headerTop">
+				<div class="logo">
+					<div class="logoPic">
+						<span><img src="../img/logo1.png"/></span>
+					</div>
+					<h1>Giant Bank</h1>
+					<h3>Integrity Leads to Prosperity</h3>
+				</div>
+				<div class="rightHeader">
+					<!-- search -->
+					<div class="search">
+			            <input type="text" placeholder='search' class="search_text"/>
+			            <span class="searchImg"></span>
+			        </div>
+			        <div class="click_register" v-if="status.noLogin">
+			            <a class="login_btn" href="userLogin.html?login">Log In</a>
+			            <a class='register_btn' href="userLogin.html?register">Register</a>
+			        </div>
+			        <div class="click_register" v-if="status.Login">
+			            <span class="helloName">Hello,</span>
+			            <span v-text="userAccount"></span>
+			            <a class='register_btn' href="#" @click="logout">Log out</a>
+			        </div>
+				</div>
+			</div>
+			<ul class="menu">
+				<li><a href="#" class="selectedMenu">Home</a></li>
+				<li><a href="#">Personal Banking</a></li>
+				<li><a href="#">Corporate Banking</a></li>
+				<li><a href="#">Bank Card</a></li>
+				<li><a href="#">Customer Service</a></li>
+			</ul>
+		</div>
+	</header>
+
+	<!-- banner -->
+	<div v-el:swipe id='swipe' class='swipe bar-slider' v-if='swipeinfo.length>0'>
+	    <div class='swipe-wrap'>
+	        <div v-for="item in swipeinfo"><a :href='item.url'><img :src='item.img' /></a></div>
+	    </div>
+	    <!-- <ul class="bannerTop">
+	    	<li>Login kdjfksl</li>
+	    	<li>Login hdkfaj</li>
+	    	<li>Login djkfkds</li>
+	    </ul> -->
+	    <!-- 分页 -->
+	    <div class="pagination">
+	        <span class="swipe-pagination-switch swipe-active-switch" @click="slideToCur(0)"></span>
+	        <span class="swipe-pagination-switch" @click="slideToCur($index+1)" v-for="item in slideNum"></span>
+	    </div>
+	</div>
+
+<script src="../js/vue.min.js"></script>
+<script src="../js/vue-resource.min.js"></script>  
+<script src="../js/lubo.min.js"></script>
+<script src="../js/userHome.js"></script>
+</body>
+</html>

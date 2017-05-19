@@ -62,7 +62,7 @@ public class LogInServlet extends HttpServlet {
 			administrator ad=administratorDAO.get(username,password);  
 			if(null==ad){
 //				request.setAttribute("msg", "wrong account or password");
-				json="{\"success\": 0,\"msg\":\"Something wrong with account or password\"}";	
+				json="{\"success\": 0,\"msg\":\"Invalid user name or password\"}";	
 			}else
 			{
 			//获得会话session

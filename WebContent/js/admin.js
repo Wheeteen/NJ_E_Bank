@@ -25,7 +25,7 @@
 					type: "POST",
 					success: function(data){
 						if(data.success == 1){
-							location.href = "mainPage.jsp";
+							location.href = "mainPage.html";
 						}else{
 							$(".err_pwd").text(data.msg);
 						}

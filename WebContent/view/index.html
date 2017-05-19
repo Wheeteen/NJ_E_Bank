@@ -1,17 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>E_Bank</title>
+<meta charset="UTF-8">
+<title>Giant Bank</title>
 <link rel="stylesheet" href="../css/style.css"/>
 </head>
 <body>
 	<div class="main_con">
-		<h1>E_Bank</h1>
+		<h1>Giant Bank</h1>
 		<h3>Administrator Login</h3>
-		<!-- action="../LogInServlet" method="post" -->
 		<form class="LoginForm">
 			<div class="username">
 				<input type="text" placeholder="Username" name="username" class="uname">
@@ -30,6 +27,16 @@
 	</div>
 	
 	<script src="../js/jquery-2.1.4.min.js" type="text/javascript"></script>
+	<script src="../js/Particleground.js"></script>
 	<script src="../js/admin.js"></script>
+	<script>
+		$(document).ready(function() {
+		  //background
+		  $('body').particleground({
+		    dotColor: '#E8EAEB',
+		    lineColor: '#E8EAEB'
+		  });
+		});
+	</script>
 </body>
 </html>

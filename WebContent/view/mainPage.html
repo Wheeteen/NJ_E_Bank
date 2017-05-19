@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Giant Bank</title>
+<link rel="stylesheet" href="../css/mainPage.css"/>
+</head>
+<body>
+	<header>
+		<div class="g_container">
+			<div class="headerTop">
+				<div class="logo">
+					<div class="logoPic">
+						<span><img src="../img/logo1.png"/></span>
+					</div>
+					<h1>Giant Bank</h1>
+					<h3>Management System</h3>
+				</div>
+				<div class="rightHeader">
+			        <div class="click_register">
+			            <span class="helloName">Hello,</span>
+			            <span v-text="status.username"></span>
+			            <a class='register_btn' href="#" @click="logOut">Log out</a>
+			        </div>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="mainCon">
+		<div class="left_con">
+			<div class="mainLeft">
+				<h3>Business Management</h3>
+				<ul class="fns">
+					<li class="openAdd" v-bind:class="{'target':status.isOpen}" @click="onOpen">
+						Saving Account Opening
+					</li>
+					<li class="inquiryAdd" v-bind:class="{'target':status.isInquiry}" @click="onInquiry">
+						Saving Account Inquiry
+					</li>
+					<li class="depositAdd" v-bind:class="{'target':status.isDeposit}" @click="onDeposit">
+						Saving Account Deposit
+					</li>
+					<li class="withdrawAdd" v-bind:class="{'target':status.isWithdraw}" @click="onWithdraw">
+						Saving Account Withdraw
+					</li>
+					<li class="pinAdd" v-bind:class="{'target':status.isPin}" @click="onChangePin">
+						Change PIN
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="right_con">
+			<!-- title -->
+			<div class="mainLeft">
+				<h3>
+					<span class="cblue">Business Management</span> 
+					<span class="cblue">></span><span v-text="keyword"></span>
+				</h3>
+				<!-- <div class="rmainCon"> -->
+					<!-- Saving account opening -->
+				<div class="AccountFn" v-if="selectForm.isOpen">
+					<form action="" v-on:submit.prevent="onSubmitOpen">
+						<div class="inputText">
+							<label>Input Customer’s Name:</label>
+							<input type="text" v-model.trim="form1.name">
+						</div>
+						<div class="tip_error" v-text="err1.name"></div>
+						<div class="inputText">
+							<label>Input Customer’s ID Number:</label>
+							<input type="text"  v-model.trim="form1.id">
+						</div>
+						<div class="tip_error" v-text="err1.id"></div>
+						<div class="inputText">
+							<label>Input Saving Account PIN:</label>
+							<input type="password" v-model.trim="form1.pin1">
+						</div>
+						<div class="tip_error" v-text="err1.pin1"></div>
+						<div class="inputText">
+							<label>Input Saving Account PIN again:</label>
+							<input type="password" v-model.trim="form1.pin2">
+						</div>
+						<div class="tip_error" v-text="err1.pin2"></div>
+						<div class="login">
+							<input type="submit" value="Submit">
+						</div>
+					</form>
+				</div>
+				<!-- Saving account inquiry -->
+				<div class="AccountFn" v-if="selectForm.isInquiry">
+					<form action="" v-on:submit.prevent="onSubmitInquiry">
+						<div class="inputText">
+							<label>Input Customer’s ID Number:</label>
+							<input type="text" v-model.trim="form2.id">
+						</div>
+						<div class="tip_error" v-text="err2.id"></div>
+						<div class="login">
+							<input type="submit" value="Submit">
+						</div>
+					</form>
+				</div>
+				<!-- Saving account deposit -->
+				<div class="AccountFn" v-if="selectForm.isDeposit">
+					<form action="">
+						<div class="inputText">
+							<label> Input User Account Number:</label>
+							<input type="text" v-model.trim="form3.userNum" v-on:blur="onUserNum(form3.userNum,err3,errDeposit)">
+						</div>
+						<div class="tip_error" v-text="err3.userNum"></div>
+						<div class="inputText">
+							<label> Input Deposit Amount:</label>
+							<input type="number" v-model.trim="form3.amount" v-on:blur="onAmount(form3.amount,err3,errDeposit,'deposit')">
+						</div>
+						<div class="tip_error" v-text="err3.amount"></div>
+						<div class="login">
+							<input type="button" value="Confirm"  v-on:click="onSubmitDeposit('../DepositServlet2','deposit')">
+						</div>
+					</form>
+				</div>
+				<!-- Saving account withdraw -->
+				<div class="AccountFn" v-if="selectForm.isWithdraw">
+					<form action="">
+						<div class="inputText">
+							<label> Input User Account Number:</label>
+							<input type="text" v-model.trim="form4.userNum" v-on:blur="onUserNum(form4.userNum,err4,errWithdraw)">
+						</div>
+						<div class="tip_error" v-text="err4.userNum"></div>
+						<div class="inputText">
+							<label> Input Withdrawal Amount:</label>
+							<input type="number" v-model.trim="form4.amount" v-on:blur="onAmount(form4.amount,err4,errWithdraw,'withdraw')">
+						</div>
+						<div class="tip_error" v-text="err4.amount"></div>
+						<div class="login">
+							<input type="button" value="Confirm" v-on:click="onSubmitDeposit('../WithdrawServlet2','withdraw')">
+						</div>
+					</form>
+				</div>
+				<!-- Change PIN -->
+				<div class="AccountFn" v-if="selectForm.isPin">
+					<form>
+						<div class="inputText">
+							<label> Input User Card Number:</label>
+							<input type="text" v-model.trim="form5.cardNum" v-on:blur="onCardNum">
+						</div>
+						<div class="tip_error" v-text="err5.cardNum"></div>
+						<div class="inputText">
+							<label> Input Identity ID number:</label>
+							<input type="text" v-model.trim="form5.id" v-on:blur="onId">
+						</div>
+						<div class="tip_error" v-text="err5.id"></div>
+						<div class="inputText">
+							<label> Input Old PIN:</label>
+							<input type="password" v-model.trim="form5.oldPin" v-on:blur="onPin('oldPin')">
+						</div>
+						<div class="tip_error" v-text="err5.oldPin"></div>
+						<div class="inputText">
+							<label> Input New PIN:</label>
+							<input type="password" v-model.trim="form5.newPin1" v-on:blur="onPin('newPin1')">
+						</div>
+						<div class="tip_error" v-text="err5.newPin1"></div>
+						<div class="inputText">
+							<label> Confirm New PIN:</label>
+							<input type="password" v-model.trim="form5.newPin2" v-on:blur="onConfirmPin">
+						</div>
+						<div class="tip_error" v-text="err5.newPin2"></div>
+						<div class="login">
+							<input type="button" value="Confirm" v-on:click="onSubmitPin">
+						</div>
+					</form>
+				</div>
+				<!-- 后台返回的信息显示区域 -->
+				<div class="info" v-if="selectForm.isInfo">
+					<h3 v-text="status.infoTitle"></h3>
+					<p v-for='item in info'>
+						<label v-text="item.title"></label>
+						<span v-text='item.text'></span>
+					</p>
+					<div class="login" v-if="status.closeAccount">
+						<input type="button" value="Close Account" v-on:click="onCloseAccount">
+					</div>
+				</div>
+				<!-- </div> -->
+			</div>
+		</div>
+	</div>
+	<!-- 覆盖一整个页面的灰屏 -->
+    <div class="grey" v-if="status.isGrey"></div>
+    <div class="warning" v-if="status.isError">
+       <div class="close" @click="onClose">
+        ×
+       </div>
+		<h3>Operating instruction</h3>
+		<div class="warningTip">
+			<label class="errImg"></label><span v-text="status.errMsg"></span>
+		</div>
+		<div class="confirmBtn" @click="onClose">
+			Confirm
+		</div>
+	</div>
+    <!-- pop-up box about the authentication code when the amount>50000 -->
+    <div class="auth" v-if='status.isAuth'>
+       <div class="close" @click = "onClose">
+        ×
+       </div>
+		<h3>Please input the authentication code</h3>
+		<form v-on:submit.prevent="authSubmit">
+			<div class="inputText">
+				<input type="password" v-model="auth.code">
+			</div>
+			<div class="tip_error err_auth" v-text="auth.err"></div>
+			<div class="login">
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+
+<script src="../js/vue.min.js"></script>
+<script src="../js/vue-resource.min.js"></script>
+<script src="../js/adminHome.js"></script>
+</body>
+</html>

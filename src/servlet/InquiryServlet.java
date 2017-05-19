@@ -72,16 +72,16 @@ public class InquiryServlet extends HttpServlet {
 			
 			String status = "Normal";
 			switch(cs.getStatus()){
-				case "0":
+				case 0:
 					status="Normal";
 					break;
-				case "1":
+				case 1:
 					status="Locked";
 					break;
-				case "2":
+				case 2:
 					status="Not activated";
 					break;
-				case "3":
+				case 3:
 					status="Not Available";
 					break;
 			}
@@ -89,6 +89,7 @@ public class InquiryServlet extends HttpServlet {
 			map.put("accountNum", cs.getAccountnumber());
 			map.put("cardNum", cs.getCardnumber());
 			map.put("name", cs.getUserName());
+			map.put("balance", cs.getBalance());
 			map.put("status", status);
 			jsonObject = JSONObject.fromObject(map);
 		}

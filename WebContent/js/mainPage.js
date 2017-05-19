@@ -15,6 +15,9 @@
 	$("#A_deposit").on("click",function(){
 		closeFns(".depositAccount","#A_deposit","deposit");
 	})
+	$("#A_changePIN").on("click",function(){
+		closeFns(".changePIN","#A_changePIN","Change PIN");
+	})
 	function closeFns(target,Ele,name){
 		$(target).fadeIn(300).siblings().hide();
 		$(Ele).addClass("target").siblings().removeClass("target");
@@ -110,6 +113,8 @@
 		
 	})
 	
+	//先用一个全局变量将customerID装起来
+	var customerID="";
 	//inquiry submit
 	$("#inquirySubmit").on("click",function(){
 		var c_id = $.trim($(".c_id2").val()),
@@ -118,7 +123,7 @@
 		if(v_id){
 			if(validate_id(c_id)){
 				$(".err_num2").text("");
-				
+				customerID = c_id;
 				//ajax将数据传到后台
 				$.ajax({
 					url: "../InquiryServlet",
@@ -131,12 +136,14 @@
 						if(data.success == 1){
 							console.log(data);
 							$(".info h3").text("You have inquiried the saving account successfully");
-							var html = "";
+							var html = "",closeBtn="";
 							html+="<p><label>Customer’s Name:</label><span>"+data.name+"</span></p>"
 								+"<p><label>Saving account number:</label><span>"+data.accountNum+"</span></p>"
 								+"<p><label>Card number:</label><span>"+data.cardNum+"</span></p>"
 								+"<p><label>Online Banking Account Status :</label><span>"+data.status+"</span></p>";
+//							closeBtn = "<div class='login'><input type='button' value='Close Account' id='closeAccount'></div>";
 							$(".info .detail").html(html);
+//							$(".info").append(closeBtn);
 							$(".inquiryAccount").hide();
 							$(".info").fadeIn(300);	
 							$(".c_id2").val("");
@@ -351,9 +358,11 @@
 						if(statusWD == "withdrawal"){
 							error.withAmount = 0;
 							$("#withdrawalSubmit").click();
-						}else{
+						}else if(statusWD == "deposit"){
 							error1.withAmount = 0;
 							$("#depositSubmit").click();
+						}else{
+							deleteUserInfo();
 						}
 						$(".grey").hide();
 						$(".auth").fadeOut(300);
@@ -369,6 +378,88 @@
 			return false;
 		}
 	})
+	
+	//changePIN submit
+	$("#changePINSubmit").on("click",function(){
+		$.ajax({
+			url: "../changePIN",
+			data:{
+				"cardNum": cardNum,
+				"ID": id,
+				"oldPIN":oldPIN,
+				"newPIN":newPIN
+			},
+			dataType: "json",
+			type: "POST",
+			success: function(data){
+				console.log(data);
+				if(data.success == 1){
+//					var balance = data.balance;
+//					if(balance>0){
+//						console.log("The account has outstanding balance and this account can’t be closed"+ balance);
+//					}else{
+//						statusWD="closeAnt";
+//						$(".grey").show();
+//						$(".auth").fadeIn(300);
+//					}
+				}else{
+					console.log(data.msg);
+					return false;
+				}
+			}
+		})
+	})
+	//click close Account
+	$("#closeAccount").on("click",function(){
+		console.log(2);
+		//ajax将数据传到后台
+		$.ajax({
+			url: "../InquiryServlet",
+			data:{
+				"CustomerID": customerID,
+			},
+			dataType: "json",
+			type: "POST",
+			success: function(data){
+				console.log(data);
+				if(data.success == 1){
+					var balance = data.balance;
+					if(balance>0){
+						console.log("The account has outstanding balance and this account can’t be closed"+ balance);
+					}else{
+						statusWD="closeAnt";
+						$(".grey").show();
+						$(".auth").fadeIn(300);
+					}
+				}else{
+					console.log(data.msg);
+					return false;
+				}
+			}
+		})
+	})
+	
+	//delete user info
+	function deleteUserInfo(){
+		//ajax将数据传到后台
+		$.ajax({
+			url: "../deleteUserInfo",
+			data:{
+				"CustomerID": customerID,
+			},
+			dataType: "json",
+			type: "POST",
+			success: function(data){
+				console.log(data);
+				if(data.success == 1){
+					$(".info h3").text("You have closed the account successfully!");
+				}else{
+					console.log("You haven't closed the account successfully!");
+					return false;
+				}
+			}
+		})
+	}
 	// 判断输入框是否为空的函数
     function ifEmpty(clsName) {
      if(clsName==""||clsName==null) {

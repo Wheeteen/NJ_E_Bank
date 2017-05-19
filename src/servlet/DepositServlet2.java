@@ -73,46 +73,38 @@ public class DepositServlet2 extends HttpServlet {
 			jsonObject = JSONObject.fromObject(map);
 		}else{
 			//用户状态显示正常: normal
-			if(Integer.parseInt(cs.getStatus())==0){
-				int rd1;
-				//将数据插入record_info table
-				try {
-					rd1 = recordDAO.insert(AccountNumber,depositAmount,amount,currency,type,Date.d2t(tdate));
-					if(rd1>0){
-						map.put("success", 1);
-						map.put("oriBalance", cs.getBalance());
-						map.put("exiBalance", amount);
-						jsonObject = JSONObject.fromObject(map);
-						
-					}
-					else{
-						map.put("success", 0);
-						map.put("msg", "Please try again,the deposit action failed");
-						jsonObject = JSONObject.fromObject(map);
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+			int rd1;
+			//将数据插入record_info table
+			try {
+				rd1 = recordDAO.insert(AccountNumber,depositAmount,amount,currency,type,Date.d2t(tdate));
+				if(rd1>0){
+					map.put("success", 1);
+					map.put("oriBalance", cs.getBalance());
+					map.put("exiBalance", amount);
+					jsonObject = JSONObject.fromObject(map);
+					
 				}
-				
-				//将balance插入customer_info
-				try {
-					int rd2=customerDAO.UpdateBalance(AccountNumber,amount);
-					if(rd2>0){
-						System.out.println("balance已成功更新到customer_info表！");
-					}else{
-						System.out.println("balance更新到customer_info表失败！！！");
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+				else{
+					map.put("success", 0);
+					map.put("msg", "Please try again,the deposit action failed");
+					jsonObject = JSONObject.fromObject(map);
 				}
-			}else{
-				//status：  为1  2  3 状态  “Locked”, “Not activated”, “Not Available” 
-				System.out.println("账户不正常状态，不进行存款操作");
-				map.put("success", 0);
-				map.put("msg", "The user account status is not normal");
-				jsonObject = JSONObject.fromObject(map);
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			//将balance插入customer_info
+			try {
+				int rd2=customerDAO.UpdateBalance(AccountNumber,amount);
+				if(rd2>0){
+					System.out.println("balance已成功更新到customer_info表！");
+				}else{
+					System.out.println("balance更新到customer_info表失败！！！");
+				}
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 		

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Giant Bank</title>
+	<link rel="stylesheet" href="../css/userLogin.css"/>
+</head>
+<body>
+	<header>
+		<div class="g_container">
+			<div class="headerTop">
+				<div class="logo">
+					<div class="logoPic">
+						<span><img src="../img/logo1.png"/></span>
+					</div>
+					<h1>Giant Bank</h1>
+					<h3>Integrity Leads to Prosperity</h3>
+				</div>
+				<div class="rightHeader">
+					<h3>Online customer service</h3>
+				</div>
+			</div>
+			<div class="headerBottom">
+				
+			</div>
+		</div>
+	</header>
+	<!-- login or register fns -->
+	<div class="mainCon" v-if="page.isLogin">
+		<!-- select login or register btn -->
+		<div class="LRBtn">
+			<span v-bind:class="{'selectBtn':status.isLogin}" @click="onLogin">Log In</span>
+			<span v-bind:class="{'selectBtn':status.isRegister}" @click="onRegister">Register</span>
+		</div>
+		<form action="" v-on:submit.prevent="onSubmitLogin" v-if="status.LoginForm">
+			<div class="inputText">
+				<label>User Account:</label>
+				<input type="text" v-model.trim="form1.name">
+			</div>
+			<!-- input is blank -->
+			<div class="tip_error" v-text="err1.name"></div>
+			<div class="inputText">
+				<label>Password:</label>
+				<input type="password" v-model="form1.pwd">
+			</div>
+			<div class="tip_error" v-text.trim="err1.pwd"></div>
+			<div class="forget_pwd">
+	            <span @click="onForgetPwd">Forget your password?</span>
+	        </div>
+			<div class="login">
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+		<!-- register -->
+		<form action="" v-if="status.RegisterForm" v-on:submit.prevent="onSubmitRegister">
+			<div class="inputText">
+				<label>User Account:</label>
+				<input type="text" v-model.trim="form2.name">
+			</div>
+			<div class="tip_error" v-text="err2.name"></div>
+			<div class="inputText">
+				<label>Identity ID Number:</label>
+				<input type="text" v-model.trim="form2.id">
+			</div>
+			<div class="tip_error" v-text="err2.id"></div>
+			<div class="inputText">
+				<label>Security Email Address:</label>
+				<input type="text" v-model.trim="form2.email">
+			</div>
+			<div class="tip_error" v-text="err2.email"></div>
+			<div class="inputText">
+				<label>Login Password:</label>
+				<input type="password" v-model.trim="form2.pwd1">
+			</div>
+			<div class="tip_error" v-text="err2.pwd1"></div>
+			<div class="inputText">
+				<label>Confirm Login Password:</label>
+				<input type="password" v-model.trim="form2.pwd2">
+			</div>
+			<div class="tip_error" v-text="err2.pwd2"></div>
+			<!-- <div class="inputText">
+				<label>Security Code:</label>
+				<input type="text" v-model.trim="form2.code" maxlength="4" id="J_codetext">
+			</div> -->
+			<div class="tip_error" v-text="err2.code"></div>
+			<div class="login">
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+	<!-- password modification -->
+	<div class="mainCon" v-if="page.isModifyPwd">
+		<h2>Password Retrieval</h2>
+		<form action="" v-on:submit.prevent="onSubmitModifyPwd">
+			<div class="inputText">
+				<label>User Account:</label>
+				<input type="text" v-model.trim="form3.name">
+			</div>
+			<div class="tip_error" v-text="err3.name"></div>
+			<div class="inputText">
+				<label>Identity ID Number:</label>
+				<input type="text" v-model.trim="form3.id">
+			</div>
+			<div class="tip_error" v-text="err3.id"></div>
+			<div class="inputText">
+				<label>Security Email Address:</label>
+				<input type="text" v-model.trim="form3.email">
+			</div>
+			<div class="tip_error" v-text="err3.email"></div>
+			<div class="login">
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+	<!-- register email content to activate the account -->
+	<div class="mainCon" v-if="page.isActivate">
+		<h2>Notification</h2>
+		<p v-text="emailMsg"></p>
+	</div>
+	<!-- reset pwd,email link to enter newPwd -->
+	<div class="mainCon" v-if="page.isResetPwd">
+		<h2>Reset Password</h2>
+		<form action="" v-on:submit.prevent="onSubmitResetPwd">
+			<div class="inputText">
+				<label>Input new password:</label>
+				<input type="password" v-model.trim="form4.pwd1">
+			</div>
+			<div class="tip_error" v-text="err4.pwd1"></div>
+			<div class="inputText">
+				<label>Input confirm password:</label>
+				<input type="password" v-model.trim="form4.pwd2">
+			</div>
+			<div class="tip_error" v-text="err4.pwd2"></div>
+			<div class="login">
+				<input type="submit" value="Submit">
+			</div>
+		</form>
+	</div>
+	<!-- 覆盖一整个页面的灰屏 -->
+    <div class="grey" v-if="status.isGrey"></div>
+    <div class="warning" v-if="status.isError">
+       <div class="close" @click="onClose">
+        ×
+       </div>
+		<h3>Operating instruction</h3>
+		<div class="warningTip">
+			<label class="errImg"></label><span v-text="status.errMsg"></span>
+		</div>
+		<div class="confirmBtn" @click="onClose">
+			Confirm
+		</div>
+	</div>
+	<!-- Tip for different fns successful -->
+	<div class="warning tipSuccess" v-if="status.isSuccess">
+		<h3 v-text="Tip.title"></h3>
+		<div class="successTip" v-text="Tip.info">
+		</div>
+		<div class="confirmBtn" @click="onOk">
+			Ok
+		</div>
+	</div>
+<script src="../js/vue.min.js"></script>
+<script src="../js/vue-resource.min.js"></script>  
+<script src="../js/userLogin.js"></script>
+</body>
+</html>

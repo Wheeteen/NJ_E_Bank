@@ -6,8 +6,53 @@ public class customer {
 	private String UserName;
 	private String PIN;
 	private String Cardnumber;
-	private String Status;
+	private int Status;
 	private int Balance;
+	//新增4个
+	private String email;
+	private String Upwd;
+	private String urlKey;
+	private String codeRster;
+	private String codePwd;
+	public String getCodeRster() {
+		return codeRster;
+	}
+	public void setCodeRster(String codeRster) {
+		this.codeRster = codeRster;
+	}
+	public String getCodePwd() {
+		return codePwd;
+	}
+	public void setCodePwd(String codePwd) {
+		this.codePwd = codePwd;
+	}
+	public String getUrlKey() {
+		return urlKey;
+	}
+	public void setUrlKey(String urlKey) {
+		this.urlKey = urlKey;
+	}
+	private String Uaccount;
+	public String getUaccount() {
+		return Uaccount;
+	}
+	public void setUaccount(String uaccount) {
+		Uaccount = uaccount;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getUpwd() {
+		return Upwd;
+	}
+	public void setUpwd(String upwd) {
+		Upwd = upwd;
+	}
+	
 	
 	public String getUserId() {
 		return UserId;
@@ -39,10 +84,10 @@ public class customer {
 	public void setCardnumber(String cardnumber) {
 		Cardnumber = cardnumber;
 	}
-	public String getStatus(){
+	public int getStatus(){
 		return Status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(int status) {
 		// TODO Auto-generated method stub
 		Status=status;
 	}

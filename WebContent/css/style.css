@@ -1,15 +1,22 @@
 @CHARSET "UTF-8";
-
+@font-face {
+	font-family: yueyuan;
+	src: url('../font/yueyuan.otf');
+}
 html,body,h1,div,span,form,input,h1,h3{
 	padding:0;
 	margin: 0;
 }
 body{
 	width:100%;
+	height: 100% !important;
 	font-size: 14px;
 	font-family: 'Arial';
 	background-color: #F7FAFC;
+	/*background:#16a085;*/
+	overflow: hidden;
 }
+canvas{z-index:-1;position:absolute;}
 .main_con{
 	width: 100%;
 	margin: 0 auto;
@@ -17,21 +24,22 @@ body{
 }
 h1{
 	text-align: center;
-	margin: 200px auto 30px;
-	font-size: 50px;
-	color: #0F88EB;
+	margin: 150px auto 30px;
+	font-size: 45px;
+	color: #a71e32;
+	font-family: yueyuan;
 }
 h3{
 	text-align: center;
 	font-size: 30px;
 	font-weight: normal;
 	margin-bottom: 20px;
-	color: #0F88EB;
+	color: #a71e32;
 	
 }
 
 form{
-	width: 380px;
+	width: 26%;
 	margin: 30px auto;
 	
 }
@@ -41,7 +49,6 @@ form{
 }
 .tip_error{
 	height: 15px;
-	margin-left: 10px;
 	color: #EA2000;
 }
 .login{
@@ -69,7 +76,7 @@ input:focus{
    	color:#fff;
    	text-align: center;
    	line-height: 40px;
-   	background-color:  #0F88EB;
+   	background-color:  #ed8b8b;
    	outline: none;
    	border:0;
    	border-radius: 4px;
@@ -77,6 +84,6 @@ input:focus{
    	font-size: 18px;
 }
 .login input:hover{
-	opacity: 0.8;
-	filter: alpha(opacity = 80);
+	opacity: 0.9;
+	filter: alpha(opacity = 90);
 }

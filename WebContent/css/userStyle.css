@@ -1,0 +1,247 @@
+@CHARSET "UTF-8";
+@font-face {
+	font-family: yueyuan;
+	src: url('../font/yueyuan.otf');
+}
+html,body,h1,div,span,form,input,h1,h3,header,img,ul,li,label,p,footer{
+	padding:0;
+	margin: 0;
+}
+body{
+	width:100%;
+	font-size: 14px;
+	font-family: 'Arial';
+	background-color: #f2f2f2;
+	color: #333;
+}
+.g_container{
+	margin: 0 auto;
+	padding-left: 15px;
+	padding-right: 15px;
+	overflow: hidden;
+}
+ul,ul li{
+	list-style-type: none;
+}
+a{
+	text-decoration: none;
+}
+header{
+	width: 85%;
+	height: 155px;
+	margin: 0 auto;
+	overflow:hidden;
+	background-color: #fdfdfd;
+	color: #333;
+	// padding-left: 15px;
+	// padding-right: 15px;
+	border-bottom: 1px solid #dcdcdc;
+}
+.headerTop{
+	width: 100%;
+	height: 94px;
+	overflow: hidden;
+	border-bottom: 2px solid #a71e32;
+}
+.logo{
+	float: left;
+	line-height: 94px;
+}
+
+.logoPic{
+	height: 94px;
+	margin-right: 8px;
+	display: table;
+	vertical-align: middle;
+	float: left;
+}
+.logoPic span{
+	display: table-cell;
+	vertical-align: middle;
+}
+.logoPic span img{
+	display: table-cell;
+	vertical-align: middle;
+	border-radius: 3px;
+}
+.logo h1{
+	font-size: 28px;
+	float: left;
+	color: #a71e32;
+	font-family: yueyuan;
+}
+.logo h3{
+	font-size: 14px;
+	font-weight: normal;
+	display: inline-block;
+	margin-left: 15px;
+	color: #666;
+
+}
+.rightHeader{
+	float: right;
+}
+.search{
+	display: inline-block;
+	width: 260px;
+	height: 30px;
+	margin-right: 20px;
+	// margin-left: 230px;
+	margin-top: 40px;
+	position: relative;
+	border-bottom: 1px solid #D9DDE1;
+}
+.search input{
+	position: absolute;
+	left: 0;
+	cursor: text;
+    background: transparent;
+    border: none;
+    color: #333;
+    width: 90%;
+    line-height: 30px;
+    height: 30px;
+    text-indent: 4px;
+    outline: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.search .searchImg{
+	position: absolute;
+	display: inline-block;
+    right: 3px;
+    top: 8px;
+    width: 16px;
+    height: 16px;
+    background: url(../img/search.png) no-repeat center;
+    cursor: pointer;
+}
+.search .searchImg:hover{
+	background: url(../img/searchRed.png) no-repeat center;
+}
+
+.click_register{
+	float: right;
+}
+.click_register .helloName{
+	display: inline-block;
+	margin-left: 15px;
+	position: relative;
+	// text-indent: 18px;
+}
+.helloName:before{
+	content: "";
+	position: absolute;
+	width: 16px;
+	height: 16px;
+	margin-left: -18px;
+	background: url(../img/user2.png) left no-repeat;
+}
+.click_register a{
+	display: inline-block;
+	width:80px;
+	height: 36px;
+	line-height: 36px;
+	text-align: center;
+	margin: 40px 0 0 20px;
+	border-radius: 5px;
+	cursor: pointer;
+	color: #666;
+	background-color: #f2f2f2;
+}
+.click_register a:hover{
+	opacity: 0.8;
+	color: #a71e32;
+}
+.menu{
+	width: 100%;
+	height: 58px;
+	line-height: 58px;
+}
+.menu li{
+	display: inline-block;
+	width:19%;	
+}
+.menu li a{
+	width: 100%;
+	display: inline-block;
+	text-align: center;
+	font-size: 16px;
+	color: #333;
+}
+.menu li a:hover,.selectedMenu{
+	color: #a71e32 !important;
+}
+
+/*轮播*/
+.swipe {
+  width: 85%;
+  left: 7.5%;
+  position: absolute;
+  overflow: hidden;
+  top:182px;
+  height: 460px;
+}
+
+.swipe .swipe-wrap{
+	position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+.swipe-wrap div{
+	float: left;
+    // display: inline-block;
+    width: 100%;
+    position: relative;
+    margin: 0;
+}
+.swipe-wrap a{
+	width: 100%;
+    height: 100%;
+    background-position: center 0;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    display: block;
+}
+.swipe-wrap img{
+	width: 100%;
+    height: 100%;
+}
+.pagination {
+    text-align: center;
+    position: relative;
+    bottom: 30px;
+    cursor: pointer;
+}
+.swipe-pagination-switch {
+    content: "";
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background: #333;
+    opacity: 0.2;
+    margin: 0 8px;
+    z-index: 10;
+    
+}
+.swipe-pagination-switch:first-child{
+	background:#a71e32;
+}
+.swipe-active-switch {
+    opacity: 1;
+}
+.bannerTop{
+	position: absolute;
+	right: 0;
+	top: 0;
+	width: 200px;
+	z-index: 20;
+}
+.bannerTop li{
+	width: 100%;
+	height: 40px;
+	line-height: 40px;
+	border-bottom: 1px solid red;
+}

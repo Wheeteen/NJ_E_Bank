@@ -55,7 +55,7 @@ public class OpenServlet extends HttpServlet {
 		NumberRandom RN=new NumberRandom();
 		String accountnumber=RN.generateString(14);
 		String cardnumber=RN.generateString(16);
-		String status="0";
+		int status=3;
 		int balance=0;
 		
 		//return json
