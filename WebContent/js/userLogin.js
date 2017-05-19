@@ -322,7 +322,7 @@
 				return pattern.test(name);
 			},
 			//register or activate successful
-			onReturn: function(user){
+			onReturn: function(){
 				window.location.href="userIndex.html";
 			},
 			verifyEmail: function(email){			
@@ -385,9 +385,9 @@
 			onOk: function(){
 				var title = this.Tip.title;
 				if(title == "Register Successful"){
-					this.onReturn(this.form2.name);
+					this.ReturnLogin();
 				}else if(title == "Successful Activation"){
-					this.onReturn(this.userAccount);
+					this.onReturn();
 				}else if(title == "Password-Reset Notification"){
 					this.ReturnLogin();
 				}else{

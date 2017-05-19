@@ -374,7 +374,7 @@
 									'title':'User Account Number:',
 									'text':form.userNum
 								},{
-									'title':Ckey+' balances:',
+									'title':Ckey+' amount:',
 									'text': balance
 								},{
 									'title':'Existing balances:',

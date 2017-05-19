@@ -74,7 +74,6 @@ public class RegisterServlet extends HttpServlet {
 			case 2:
 				map.put("success", 1);
 				jsonObject = JSONObject.fromObject(map);
-				request.getSession().setAttribute("userAccount", Uaccount);
 				break;
 			case 3:
 				map.put("success", 0);
